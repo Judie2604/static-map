@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Map</title>
+    <style>
+        label, select, button {
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our College Map</h1>
+
+    <!-- Google My Map Embedding -->
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1fWYUtoh_5yM5OknKawfgKB3Y_KKpWgM&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+
+    <div>
+        <label for="sourceSelect">Select Source Location:</label>
+        <label for="sourceSelect">Select Source:</label>
+        <select id="sourceSelect">
+            <option value="12.869699335482332, 80.21506279701909">Library</option>
+            <option value="12.868468439338248, 80.21577387377741">Indoor Auditorium</option>
+            <option value="12.869313406895529, 80.21698512574541">Admin Block</option>
+        </select>
+
+        <label for="destinationSelect">Select Destination:</label>
+        <select id="destinationSelect">
+            <option value="12.868468439338248, 80.21577387377741">Indoor Autitorium</option>
+            <option value="12.869313406895529, 80.21698512574541">Admin Block</option>
+            <option value="12.869699335482332, 80.21506279701909">Library</option>
+        </select>
+    </div>
+
+    <button onclick="getDirections()">Get Directions</button>
+
+    <script>
+        function getDirections() {
+            const source = document.getElementById("sourceSelect").value.trim();
+            const destination = document.getElementById("destinationSelect").value.trim();
+
+            if (!source || !destination) {
+                alert("Please select both source and destination.");
+                return;
+            }
+
+            const navigationUrl = `https://www.google.com/maps/dir/?api=1&origin=${source}&destination=${destination}`;
+            window.open(navigationUrl, "_blank");
+        }
+    </script>
+</body>
+</html>
